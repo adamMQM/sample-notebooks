@@ -25,6 +25,8 @@ services:
         pip config set global.disable-pip-version-check true
         export FBN_NOTEBOOK_FOLDER=/usr/notebooks
         cd $${FBN_NOTEBOOK_FOLDER}
-        pip install -r requirements.txt
+        pip install -r requirements.txt\        
+        export GIT_DIFF=$$(git diff --name-only --diff-filter=ACMRT origin/develop..HEAD)
+        echo $$GIT_DIFF
         python /usr/src/nbrunner/main.py --notebooks $${FBN_NOTEBOOK_FOLDER}/examples
         python /usr/src/nbrunner/main.py --notebooks $${FBN_NOTEBOOK_FOLDER}/university
