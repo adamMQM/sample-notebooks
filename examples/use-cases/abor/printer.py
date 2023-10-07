@@ -774,8 +774,6 @@ def get_holdings_df(response):
     for holding in response.values:
         current_row = {}
         current_row.update(vars(holding))
-        for field in nested_fields:
-            del current_row["_" + field]
         current_row['cost.amount'] = holding.cost.amount
         current_row['cost.currency'] = holding.cost.currency
         current_row['cost_portfolio_ccy.amount'] = holding.cost.amount
